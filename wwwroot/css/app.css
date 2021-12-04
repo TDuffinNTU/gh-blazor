@@ -17,13 +17,53 @@
     @apply bg-gray-500;
 }
 
+.navbar {
+    @apply bg-gray-800 flex flex-col filter drop-shadow-md fixed inset-y-0 left-0 h-screen transition duration-500 ease-in-out;
+    z-index: 100;
+}
+
+.navbar-hidden {
+    @apply transform -translate-x-full;
+}
+
+.nav-toggler {
+    @apply w-10 h-10 fixed mt-10 mx-5 top-0 right-0 bg-gray-800 border-2 border-gray-900 border-opacity-100 p-2 rounded-full hover:bg-gray-600 transition duration-500 ease-in-out;
+    z-index: 100;
+}
+
+.overlay {
+    @apply fixed w-screen h-screen bg-black filter backdrop-blur-2xl transition-opacity duration-500 ease-in-out;
+    z-index: 99;
+}
+
+.overlay-shown {
+    @apply  opacity-70;
+}
+
+.overlay-hidden {
+    @apply  opacity-0;
+}
+
+.nav-toggler-rotated {
+    @apply transform rotate-180;
+}
+
+/* MAINLAYOUT.RAZOR */
+.content-body {
+    @apply w-screen bg-gray-800 justify-self-center lg:mx-48 sm:mx-20 mx-2 my-8 p-5 rounded-lg filter drop-shadow-lg overflow-visible min-h-screen;
+}
+
+.main-layout {
+    @apply flex flex-row bg-gray-900 text-gray-50;
+}
+
 /* INDEX.HTML and GLOBAL STUFF */
 h1 {
     @apply font-bold text-xl;
 }
 
 body {
-    @apply bg-gray-700 text-white;
+    @apply bg-gray-900 text-white;
 }
 
 #blazor-error-ui {

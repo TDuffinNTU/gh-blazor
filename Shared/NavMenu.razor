@@ -1,8 +1,8 @@
-﻿<nav class="bg-gray-800 flex flex-col pt-5 filter drop-shadow-md">
-    <a href=""class="place-self-center ">
+﻿<nav class="navbar @navbarClass">
+    @* <a href=""class="place-self-center ">
         <img src="imgs/ProfilePic.jpg" class="w-32 rounded-lg hover:opacity-75">
-    </a>
-    <ul class="flex flex-col mx-5 pt-5 space-y-3" style="width:130px;">
+    </a> *@
+    <ul class="flex flex-col mx-5 mt-6 space-y-3" style="width:130px;">
 
         <NavLink class="nav-item" href="" Match="NavLinkMatch.All">
             <span class="oi oi-home mr-2" aria-hidden="true"></span> Home
@@ -26,13 +26,36 @@
     </ul>
 </nav>
 
-@code {
-    private bool collapseNavMenu = true;
+@* Toggle Nav Menu Button *@
+<button class="nav-toggler @togglerClass" @onclick="ToggleNavMenu">
+    <span class="oi oi-chevron-left place-self-center" aria-hidden="true"></span>
+</button>
 
-    private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+@* Cover everything in a little shadow/blur :) *@
+<div class="overlay @overlayClass" @onclick="onOverlayClick"></div>
+
+@code {
+    private static bool collapseNavMenu = true;
+    public string navbarClass = collapseNavMenu ? "navbar-hidden" : "";   
+    public string togglerClass = collapseNavMenu ? "nav-toggler-rotated" : "";
+    public string overlayClass = collapseNavMenu ? "overlay-hidden" : "overlay-shown";
 
     private void ToggleNavMenu()
     {
         collapseNavMenu = !collapseNavMenu;
+
+        navbarClass = collapseNavMenu ? "navbar-hidden" : "";
+        togglerClass = collapseNavMenu ? "nav-toggler-rotated" : "";
+        overlayClass = collapseNavMenu ? "overlay-hidden" : "overlay-shown";
+
+        Console.Out.WriteLine(collapseNavMenu);      
+    }
+
+    private void onOverlayClick()
+    {
+        if (!collapseNavMenu) // overlay is open
+        {
+            ToggleNavMenu();
+        }
     }
 }
