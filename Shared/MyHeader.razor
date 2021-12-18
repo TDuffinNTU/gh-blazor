@@ -1,0 +1,22 @@
+
+@inject NavigationManager NavigationManager
+
+<div class="flex flex-row bg-gradient-to-r from-slate-700 to-gray-800 p-4 fixed top-0 left-0 w-full">
+    <button class="self-center z-40" @onclick="Activate">
+        <div class="oi oi-menu"></div>
+    </button>
+    <h1 class="mx-5 text-2xl justify-self-center">@Title</h1>
+</div>
+
+@code {    
+    public string Title { get; set; } = "...";
+
+    [Parameter] public EventCallback NavMenuOpenedEvent {get; set;}
+
+    private void Activate() 
+    {
+        Console.WriteLine("Activated");
+        NavMenuOpenedEvent.InvokeAsync();
+    }
+    
+}

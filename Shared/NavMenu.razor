@@ -26,36 +26,29 @@
     </ul>
 </nav>
 
-@* Toggle Nav Menu Button *@
-<button class="nav-toggler @togglerClass" @onclick="ToggleNavMenu">
-    <span class="oi oi-chevron-left place-self-center" aria-hidden="true"></span>
-</button>
-
 @* Cover everything in a little shadow/blur :) *@
 <div class="overlay @overlayClass" @onclick="onOverlayClick"></div>
 
 @code {
     private static bool collapseNavMenu = true;
     public string navbarClass = collapseNavMenu ? "navbar-hidden" : "";   
-    public string togglerClass = collapseNavMenu ? "nav-toggler-rotated" : "";
+    
     public string overlayClass = collapseNavMenu ? "overlay-hidden" : "overlay-shown";
 
-    private void ToggleNavMenu()
+    public void Toggle()
     {
         collapseNavMenu = !collapseNavMenu;
 
         navbarClass = collapseNavMenu ? "navbar-hidden" : "";
-        togglerClass = collapseNavMenu ? "nav-toggler-rotated" : "";
         overlayClass = collapseNavMenu ? "overlay-hidden" : "overlay-shown";
-
-        Console.Out.WriteLine(collapseNavMenu);      
+        InvokeAsync(()=>{StateHasChanged();});
     }
 
     private void onOverlayClick()
     {
         if (!collapseNavMenu) // overlay is open
         {
-            ToggleNavMenu();
+            Toggle();
         }
     }
 }

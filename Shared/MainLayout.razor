@@ -1,11 +1,21 @@
 @inherits LayoutComponentBase
 
 <div class="main-layout">
+    <NavMenu @ref="_NavMenu"/>  
 
-    <NavMenu/>  
-
+    <MyHeader NavMenuOpenedEvent = "NavMenuOpened"/>   
+    
     <div class="content-body">
         @Body
     </div>
     
 </div>
+
+
+@code {
+    protected NavMenu _NavMenu;
+    public void NavMenuOpened() {
+        //Console.WriteLine("MainLayout");
+        _NavMenu.Toggle();
+    }
+}

@@ -6,7 +6,6 @@ module.exports = {
         './**/*.razor'
     ],
   },
-  darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {},
   },
