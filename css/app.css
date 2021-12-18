@@ -6,34 +6,25 @@
 
 /* NAVMENU.RAZOR */
 .nav-item {
-    @apply p-2 rounded-lg;
+    @apply p-2 rounded-lg transition duration-200 ease-in-out hover:scale-110;
 }
 
 .nav-item.active {
-    @apply bg-gray-700;
-}
-
-.nav-item:hover {
-    @apply bg-gray-500;
+    @apply bg-gradient-to-r from-gray-900 to-slate-700;
 }
 
 .navbar {
-    @apply bg-gray-800 flex flex-col filter drop-shadow-md fixed inset-y-0 left-0 h-screen transition duration-500 ease-in-out;
-    z-index: 100;
+    @apply z-50 bg-gradient-to-b from-slate-700 to-gray-800 flex flex-col filter drop-shadow-md fixed inset-y-0 left-0 h-screen transition duration-500 ease-in-out;
+    
 }
 
 .navbar-hidden {
     @apply transform -translate-x-full;
 }
 
-.nav-toggler {
-    @apply w-10 h-10 fixed mt-10 mx-5 top-0 right-0 bg-gray-800 border-2 border-gray-900 border-opacity-100 p-2 rounded-full hover:bg-gray-600 transition duration-500 ease-in-out;
-    z-index: 100;
-}
-
 .overlay {
-    @apply fixed w-screen h-screen bg-black filter backdrop-blur-2xl transition-opacity duration-500 ease-in-out;
-    z-index: 99;
+    @apply z-30 fixed w-screen h-screen bg-black filter backdrop-blur-2xl transition-opacity duration-500 ease-in-out;
+    
 }
 
 .overlay-shown {
@@ -41,16 +32,12 @@
 }
 
 .overlay-hidden {
-    @apply  opacity-0;
-}
-
-.nav-toggler-rotated {
-    @apply transform rotate-180;
+    @apply  opacity-0 transform -translate-x-full;
 }
 
 /* MAINLAYOUT.RAZOR */
 .content-body {
-    @apply w-screen bg-gray-800 justify-self-center lg:mx-48 sm:mx-20 mx-2 my-8 p-5 rounded-lg filter drop-shadow-lg overflow-visible min-h-screen;
+    @apply w-screen justify-self-center lg:mx-48 sm:mx-20 mx-2 my-20 p-5 rounded-lg filter drop-shadow-lg overflow-visible min-h-screen;
 }
 
 .main-layout {
